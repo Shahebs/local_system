@@ -1,0 +1,28 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Men's Casual Shirt",
+      "price": 25.99,
+      "image": "https://via.placeholder.com/250"
+    },
+    {
+      "id": 2,
+      "name": "Women's Denim Jeans",
+      "price": 45.50,
+      "image": "https://via.placeholder.com/250"
+    },
+    {
+      "id": 3,
+      "name": "Kid's T-Shirt",
+      "price": 15.00,
+      "image": "https://via.placeholder.com/250"
+    },
+    {
+      "id": 4,
+      "name": "Men's Formal Shoes",
+      "price": 75.00,
+      "image": "https://via.placeholder.com/250"
+    }
+  ]
+}

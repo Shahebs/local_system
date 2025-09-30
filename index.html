@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantaloons</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="top-bar-left">
+                    <a href="#">GREENCARD</a>
+                    <a href="#">GIFT CARD</a>
+                    <a href="#">STORE LOCATOR</a>
+                    <a href="#">TRACK ORDER</a>
+                    <a href="#">CONTACT</a>
+                </div>
+                <div class="top-bar-right">
+                    <a href="#">ENTIRE COLLECTION</a>
+                    <a href="#">STORE MODE</a>
+                </div>
+            </div>
+        </div>
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="#">PANTALOONS</a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#">MEN</a></li>
+                        <li><a href="#">KIDS</a></li>
+                        <li><a href="#">BRANDS</a></li>
+                        <li><a href="#">SALE</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <div class="header-right">
+                    <input type="text" placeholder="Search for products and more...">
+                    <a href="#">My Account</a>
+                    <a href="#">Wishlist</a>
+                    <a href="#">Cart</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <!-- Hero image or slider will go here -->
+        </section>
+
+        <section class="products">
+            <div class="container">
+                <h2>Featured Products</h2>
+                <div class="product-grid">
+                    <!-- Product items will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const productGrid = document.querySelector('.product-grid');
+
+            fetch('/api/products')
+                .then(response => response.json())
+                .then(products => {
+                    products.forEach(product => {
+                        const productItem = document.createElement('div');
+                        productItem.className = 'product-item';
+
+                        productItem.innerHTML = `
+                            <img src="${product.image}" alt="${product.name}">
+                            <h3>${product.name}</h3>
+                            <p>$${product.price.toFixed(2)}</p>
+                        `;
+
+                        productGrid.appendChild(productItem);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching products:', error);
+                    productGrid.innerHTML = '<p>Could not load products.</p>';
+                });
+        });
+    </script>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <!-- Footer links will go here -->
+            </div>
+            <div class="social-media">
+                <!-- Social media links will go here -->
+            </div>
+            <div class="newsletter">
+                <h3>Subscribe to our newsletter</h3>
+                <input type="email" placeholder="Email Address">
+                <button>SUBSCRIBE</button>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
